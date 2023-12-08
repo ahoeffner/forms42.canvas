@@ -33,8 +33,7 @@
    vertical-align: top;
 }
 
-/*----------------*/
-/* fieldset */
+/* fieldsets */
 
 fieldset
 {
@@ -75,8 +74,8 @@ legend.right
    margin-right:15px;
 }
 
-/*----------------*/
-/*indicator */
+
+/* Indicators */
 [type="row-indicator"].failed:before
 {
    top: 50%;
