@@ -19,16 +19,16 @@
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-import content from './Generated.html';
+import content from './Template.html';
 
-import { Alert, Block, EventType, FormEvent, datasource, formevent } from 'futureforms';
 import { BaseForm } from '../../BaseForm';
-import { GeneratedDS } from './GeneratedDS';
+import { TemplateDS } from './TemplateDS';
+import { Block, EventType, FormEvent, datasource, formevent } from 'futureforms';
 
 
-@datasource("employees",GeneratedDS)
+@datasource("employees",TemplateDS)
 
-export class Generated extends BaseForm
+export class Template extends BaseForm
 {
 	constructor()
 	{
@@ -36,25 +36,14 @@ export class Generated extends BaseForm
 		this.title = "Employees";
 	}
 
-	@formevent({type: EventType.OnFetch})
-	public async jonas(event:FormEvent) : Promise<boolean>
+	@formevent({type: EventType.WhenValidateField})
+	public async validateField(event:FormEvent) : Promise<boolean>
 	{
-		let emp:Block = this.getBlock(event.block);
-		emp.setValue("name",emp.getValue("first_name")+" "+emp.getValue("last_name"))
-		return(true);
-	}
+		let field:string = event.field;
+		let block:Block = this.getBlock(event.block);
 
-	@formevent({type: EventType.WhenValidateField, field: "salary"})
-	public async salary(event:FormEvent) : Promise<boolean>
-	{
-		let emp:Block = this.getBlock(event.block);
-		let salary:number = emp.getValue("salary");
-
-		if (salary > 10000)
-		{
-			Alert.warning("Not allowed in this company","Salary");
-			return(false);
-		}
+		let value:any = block.getValue(field);
+		console.log("validate "+field+" - "+value);
 
 		return(true);
 	}

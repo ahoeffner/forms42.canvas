@@ -22,14 +22,19 @@
 import { FormsModule } from "../../FormsModule";
 import { DatabaseTable, LockMode } from "futureforms";
 
-export class GeneratedDS extends DatabaseTable
+export class TemplateDS extends DatabaseTable
 {
+	public static table:string = "employees";
+	public static order:string = "last_name";
+	public static primarykey:string[] = ["employee_id"];
+
+
 	constructor()
 	{
-		super(FormsModule.DATABASE,"employees");
+		super(FormsModule.DATABASE,TemplateDS.table);
 
-		this.sorting = "last_name";
-		this.primaryKey = "employee_id";
+		this.sorting = TemplateDS.order;
+		this.primaryKey = TemplateDS.primarykey;
 		this.rowlocking = LockMode.Pessimistic;
 	}
 }

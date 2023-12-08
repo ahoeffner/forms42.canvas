@@ -20,7 +20,7 @@
 */
 
 import { Class, Form, FormsModule, StaticMenu, StaticMenuEntry } from "futureforms";
-import { Generated } from "../../forms/generated/Generated";
+import { Template } from "../../forms/generated/Template";
 
 export class FormList extends StaticMenu
 {
@@ -32,11 +32,9 @@ export class FormList extends StaticMenu
 	public async execute(path:string): Promise<boolean>
 	{
 		let form:Class<Form> = null;
-		if (path == "/forms/generated") form = Generated;
+		if (path == "/forms/template") form = Template;
 
-		if (form)
-			await FormsModule.showform(form);
-
+		if (form) await FormsModule.showform(form);
 		return(true);
 	}
 
@@ -49,9 +47,9 @@ export class FormList extends StaticMenu
 			entries:
 			[
 				{
-					id: "generated",
-					display: "Generated",
-					command: "/forms/generated"
+					id: "template",
+					display: "Template",
+					command: "/forms/template"
 				}
 			]
 		});

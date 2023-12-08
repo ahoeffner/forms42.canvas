@@ -22,9 +22,9 @@
 import { BaseForm } from './BaseForm';
 import { Minimized } from './Minimized';
 
-import { CanvasHeader } from './fragments/CanvasHeader';
 import { PageHeader } from './fragments/PageHeader';
 import { PageFooter } from './fragments/PageFooter';
+import { CanvasHeader } from './fragments/CanvasHeader';
 
 import { Menu as TopMenu } from './menus/topmenu/Menu';
 import { Menu as LeftMenu } from './menus/leftmenu/Menu';
