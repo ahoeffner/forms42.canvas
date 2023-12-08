@@ -1,14 +1,4 @@
-.container
-{
-   gap:5px;
-   display:grid;
-}
-
-.container.flex
-{
-   display:flex;
-   vertical-align: top;
-}
+/* Horizontal positioning */
 
 .left
 {
@@ -29,35 +19,18 @@
    justify-content: right;
 }
 
-legend.center
+/* Containers */
+
+.container
 {
-   margin-right: auto;
-   margin-left: auto;
+   gap:5px;
+   display:grid;
 }
 
-legend.left
+.container.flex
 {
-   
-   margin-right: auto;
-   margin-left:15px;
-}
-
-legend.right
-{
-   margin-left: auto;
-   margin-right:15px;
-}
-
-.block
-{
-	margin:10px;
-	padding: 30px;
-   display: grid;
-	position: relative;
-   width: max-content;
-   height: max-content;
-	border-radius: 10px;
-	box-shadow: 0 5px 30px rgba(0, 0, 0, .30);
+   display:flex;
+   vertical-align: top;
 }
 
 /*----------------*/
@@ -81,6 +54,25 @@ fieldset legend
   border-radius: 10px;
   justify-content: center;
   border:solid 1px black
+}
+
+legend.center
+{
+   margin-right: auto;
+   margin-left: auto;
+}
+
+legend.left
+{
+
+   margin-right: auto;
+   margin-left:15px;
+}
+
+legend.right
+{
+   margin-left: auto;
+   margin-right:15px;
 }
 
 /*----------------*/
