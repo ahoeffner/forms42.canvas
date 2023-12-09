@@ -76,7 +76,7 @@ legend.right
 
 
 /* Indicators */
-[type="row-indicator"].failed:before
+[type="row-indicator"].pointer.failed:before
 {
    top: 50%;
    top:10px;
@@ -92,7 +92,7 @@ legend.right
    transform: translate(-50%,-50%);
 }
 
-[type="row-indicator"]
+[type="row-indicator"].pointer
 {
 	width:10px;
    height: 10px;
@@ -103,7 +103,7 @@ legend.right
 	justify-content: center;
 }
 
-[type="row-indicator"].active
+[type="row-indicator"].pointer.active
 {
 
    top: 15px;

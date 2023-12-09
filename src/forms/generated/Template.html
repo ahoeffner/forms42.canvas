@@ -1,6 +1,6 @@
 <include src="/html/canvasheader"></include>
 
-<div style="width:1400px;"></div>
+<div style="width:200px;"></div>
 
 <fieldset class="container">
 	<legend>employees</legend>
@@ -31,8 +31,8 @@
 			</tr>
 		 </thead>
 		 <tbody>
-			<tr type="row-indicator" from="employees" class="state" foreach="row in 0..3">
-			  <td class="indicator" from="employees" row="$row" type="row-indicator"></td>
+			<tr foreach="row in 0..3" type="row-indicator" from="employees" row="$row" class="row">
+			  <td type="row-indicator" from="employees" row="$row" class="indicator pointer"></td>
 			  <td>
 				 <input name="hire_date" from="employees" type="date" date id="emp-hd-0-$row" row="$row">
 			  </td>
