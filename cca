@@ -1,1 +1,0 @@
-cd ../core; npm run build;cd ../forms42.generator; npm run build;

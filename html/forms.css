@@ -39,21 +39,6 @@ td
 	line-height: 1.42857143;
 }
 
-.indicator
-{
-	width:10px;
-	align-items: center;
-	justify-content: center;
-}
-
-[type="row-indicator"].active
-{
-	width:10px;
-	height: 10px;
-	display: block;
-	border-radius: 50px;
-	background-color: gray;
-}
 /* ---------------------------- */
 /*FieldTypes canvas */
 
