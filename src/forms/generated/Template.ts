@@ -23,17 +23,20 @@ import content from './Template.html';
 
 import { BaseForm } from '../../BaseForm';
 import { TemplateDS } from './TemplateDS';
-import { Block, EventType, FormEvent, datasource, formevent } from 'futureforms';
+import { Block, DatabaseTable, EventType, FormEvent, TableSorter, datasource, formevent } from 'futureforms';
 
 
 @datasource("employees",TemplateDS)
 
 export class Template extends BaseForm
 {
+	private sorter:TableSorter;
+
 	constructor()
 	{
 		super(content);
 		this.title = "Employees";
+		this.sorter = new TableSorter(this);
 	}
 
 	@formevent({type: EventType.WhenValidateField})
@@ -48,4 +51,8 @@ export class Template extends BaseForm
 		return(true);
 	}
 
+	public async sort(block:string, column:string) : Promise<boolean>
+	{
+		return(this.sorter.toggle(block,column).sort(block));
+	}
 }
