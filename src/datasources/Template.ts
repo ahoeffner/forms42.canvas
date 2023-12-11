@@ -19,10 +19,10 @@
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-import { FormsModule } from "../../FormsModule";
+import { FormsModule } from "../FormsModule";
 import { DatabaseTable, LockMode } from "futureforms";
 
-export class TemplateDS extends DatabaseTable
+export class Template extends DatabaseTable
 {
 	public static table:string = "employees";
 	public static order:string = "last_name";
@@ -31,10 +31,10 @@ export class TemplateDS extends DatabaseTable
 
 	constructor()
 	{
-		super(FormsModule.DATABASE,TemplateDS.table);
+		super(FormsModule.DATABASE,Template.table);
 
-		this.sorting = TemplateDS.order;
-		this.primaryKey = TemplateDS.primarykey;
+		this.sorting = Template.order;
+		this.primaryKey = Template.primarykey;
 		this.rowlocking = LockMode.Pessimistic;
 	}
 }
