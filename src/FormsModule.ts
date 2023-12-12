@@ -67,23 +67,29 @@ export class FormsModule extends FormsCoreModule
 		this.leftmenu = new LeftMenu();
 		FormsModule.updateKeyMap(keymap);
 
+		// Stateful timeout
 		Connection.TRXTIMEOUT = 240;
 		Connection.CONNTIMEOUT = 120;
 
+		// Setup connection
 		FormsModule.DATABASE = new Connection("http://localhost:9002");
-		FormsModule.DATABASE.scope = ConnectionScope.transactional;
+		FormsModule.DATABASE.scope = ConnectionScope.stateless;
 
+		// Communicate when validating row or block
 		FormsModule.defaultFlushStrategy = FlushStrategy.Block;
 
+		// Add shortcut information page
 		let infomation:HTMLElement = document.querySelector(".infomation");
 		infomation.appendChild(KeyMapPage.show(keymap));
 
+		// Add shortcuts for login, close, and menues
 		this.addEventListener(this.close,{type: EventType.Key, key: keymap.close});
 		this.addEventListener(this.login,{type: EventType.Key, key: keymap.login});
 
 		this.addEventListener(this.showTopMenu,{type: EventType.Key, key: keymap.topmenu});
 		this.addEventListener(this.showLeftMenu,{type: EventType.Key, key: keymap.leftmenu});
 
+		// Direct url navigation
 		FormsModule.OpenURLForm();
 	}
 

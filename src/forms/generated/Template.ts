@@ -40,7 +40,7 @@ export class Template extends BaseForm
 	}
 
 	/** Trigger template */
-	@formevent({type: EventType.WhenValidateField})
+	@formevent({type: EventType.WhenValidateField, block: "some-block", field: "some-field"})
 	public async validateField(event:FormEvent) : Promise<boolean>
 	{
 		let field:string = event.field;
@@ -52,7 +52,7 @@ export class Template extends BaseForm
 		return(true);
 	}
 
-	/** Referenced by labels in html */
+	/** Sorting, referenced by labels in html */
 	public async sort(block:string, column:string) : Promise<boolean>
 	{
 		return(this.sorter.toggle(block,column).sort(block));
