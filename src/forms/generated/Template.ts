@@ -23,10 +23,10 @@ import content from './Template.html';
 
 import { BaseForm } from '../../BaseForm';
 import { Template as DataSource } from '../../datasources/Template';
-import { Block, EventType, FormEvent, KeyMap, TableSorter, datasource, formevent } from 'futureforms';
+import { Block, EventType, FormEvent, TableSorter, datasource, formevent } from 'futureforms';
 
 
-@datasource("employees",DataSource)
+@datasource("fromclause",DataSource)
 
 export class Template extends BaseForm
 {

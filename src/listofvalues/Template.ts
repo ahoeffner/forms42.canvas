@@ -19,23 +19,32 @@
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-import { FormsModule } from "../FormsModule";
-import { DatabaseTable, LockMode } from "futureforms";
+
+import { Filter, Filters, ListOfValues } from "futureforms";
+import { Template as DataSource } from '../datasources/Template';
 
 
-export class Template extends DatabaseTable
+export class Template implements ListOfValues
 {
-	public static table:string = "employees";
-	public static order:string = "last_name";
-	public static primarykey:string[] = ["employee_id"];
+	public title:string = "title";
 
+	public filter:Filter;
+	public datasource:DataSource;
+
+	public sourcefields:string[];
+	public targetfields:string[];
+	public displayfields:string[];
+
+	public inQueryMode:boolean = true;
+	public inReadOnlyMode:boolean = false;
 
 	constructor()
 	{
-		super(FormsModule.DATABASE,Template.table);
+		this.datasource = new DataSource();
+		this.filter = Filters.Equals("col0")
 
-		this.sorting = Template.order;
-		this.primaryKey = Template.primarykey;
-		this.rowlocking = LockMode.Pessimistic;
+		this.sourcefields = ["col1","col2"];
+		this.targetfields = ["field1","field2"];
+		this.displayfields = ["col0","col3","col4"];
 	}
 }
