@@ -71,6 +71,9 @@ export class FormsModule extends FormsCoreModule
 		Connection.TRXTIMEOUT = 240;
 		Connection.CONNTIMEOUT = 120;
 
+		// Stateful lock limit
+		Connection.MAXLOCKS = 16;
+
 		// Setup connection
 		FormsModule.DATABASE = new Connection("http://localhost:9002");
 		FormsModule.DATABASE.scope = ConnectionScope.stateless;
