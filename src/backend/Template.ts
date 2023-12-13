@@ -25,7 +25,7 @@ import { BindValue, DataType, ParameterType, SQLStatement, StoredProcedure } fro
 
 export class Template
 {
-	public static async execSomeSQL(parameter:string) : Promise<string>
+	public static async execSomeSQL(arg1:string) : Promise<string>
 	{
 		let row:any[] = null;
 		let stmt:SQLStatement = new SQLStatement(FormsModule.DATABASE);
@@ -34,10 +34,10 @@ export class Template
 		`
 			select column1
 			from table
-			where column0 = :id
+			where column0 = :arg1
 		`;
 
-		stmt.addBindValue(new BindValue("id",parameter,DataType.string));
+		stmt.addBindValue(new BindValue("arg1",arg1,DataType.string));
 
 		let success:boolean = await stmt.execute();
 		if (success) row = await stmt.fetch();
