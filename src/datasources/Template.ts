@@ -25,9 +25,9 @@ import { DatabaseTable, LockMode } from "futureforms";
 
 export class Template extends DatabaseTable
 {
-	public static table:string = "employees";
-	public static order:string = "last_name";
-	public static primarykey:string[] = ["employee_id"];
+	public static table:string = "tablename";
+	public static order:string = "col1, col2";
+	public static primarykey:string[] = ["col1"];
 
 
 	constructor()
