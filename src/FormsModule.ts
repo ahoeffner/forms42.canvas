@@ -22,6 +22,8 @@
 import { BaseForm } from './BaseForm';
 import { Minimized } from './Minimized';
 
+import { Template } from './tags/Template';
+
 import { PageHeader } from './fragments/PageHeader';
 import { PageFooter } from './fragments/PageFooter';
 import { CanvasHeader } from './fragments/CanvasHeader';
@@ -57,14 +59,21 @@ export class FormsModule extends FormsCoreModule
 		// Be aware of FormProperties
 		FormProperties.DateFormat = "DD-MM-YYYY";
 
-		FormsModule.setRootElement(document.body.querySelector("#forms"));
+		// Demo custom tag
+		FormProperties.TagLibrary.set("Template",Template);
 
+		// Set root element for forms and parse the document
+		FormsModule.setRootElement(document.body.querySelector("#forms"));
 		this.parse();
+
+		// Minimized window list
 		this.list = new Minimized();
 
 		// Menues
 		this.topmenu = new TopMenu();
 		this.leftmenu = new LeftMenu();
+
+		// Update the keymapping
 		FormsModule.updateKeyMap(keymap);
 
 		// Stateful timeout
