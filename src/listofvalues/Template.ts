@@ -24,22 +24,14 @@ import { Filter, Filters, ListOfValues } from "futureforms";
 import { Template as DataSource } from '../datasources/Template';
 
 
-export class Template implements ListOfValues
+export class Template extends ListOfValues
 {
 	public title:string = "title";
 
-	public filter:Filter;
-	public datasource:DataSource;
-
-	public sourcefields:string[];
-	public targetfields:string[];
-	public displayfields:string[];
-
-	public inQueryMode:boolean = true;
-	public inReadOnlyMode:boolean = false;
-
 	constructor()
 	{
+		super();
+
 		this.datasource = new DataSource();
 		this.filter = Filters.Equals("col0")
 
