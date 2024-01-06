@@ -53,11 +53,11 @@ export class FormsModule extends FormsCoreModule
 	{
 		super();
 
-		// Be aware of InternalFormsConfig
-		InternalFormsConfig.close = "&#215;";
-
 		// Be aware of FormProperties
 		FormProperties.DateFormat = "DD-MM-YYYY";
+
+		// Be aware of InternalFormsConfig
+		InternalFormsConfig.CloseButtonText = "&#215;";
 
 		// Demo custom tag
 		FormProperties.TagLibrary.set("Template",Template);
