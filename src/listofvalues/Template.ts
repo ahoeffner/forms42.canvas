@@ -20,7 +20,7 @@
 */
 
 
-import { Filter, Filters, ListOfValues } from "futureforms";
+import { Filters, ListOfValues } from "futureforms";
 import { Template as DataSource } from '../datasources/Template';
 
 
