@@ -28,24 +28,18 @@ export class Template
 	public static async execSomeSQL(arg1:string) : Promise<string[]>
 	{
 		let row:any[] = null;
-		let stmt:SQLStatement = new SQLStatement(FormsModule.DATABASE);
-
-		stmt.sql =
-		`
-			select column1
-			from table
-			where column0 = :arg1
-		`;
+		let stmt:SQLStatement = new SQLStatement("source id");
 
 		stmt.addBindValue(new BindValue("arg1",arg1,DataType.string));
 
 		let response:string[] = [];
-		let success:boolean = await stmt.execute();
+		let success:boolean = await stmt.execute(FormsModule.DATABASE);
 
 		while(success)
 		{
 			row = await stmt.fetch(); // fetch next row
-			if (!row) success = false; // no more rows to fetch
+			
+			if (!row) break; // no more rows to fetch
 			else response.push(row[0]); // add first column to result
 		}
 
@@ -57,20 +51,18 @@ export class Template
 	public static async procWithInOut(arg1:string) : Promise<number[]>
 	{
 		let out:number[] = [0,0];
-		let func:StoredProcedure = new StoredProcedure(FormsModule.DATABASE);
-
-		func.setName("funcWithInOut");
+		let func:StoredProcedure = new StoredProcedure("source id");
 
 		func.addParameter("arg1",arg1,DataType.varchar);
 		func.addParameter("out1",0,DataType.integer,ParameterType.inout);
 		func.addParameter("out2",0,DataType.integer,ParameterType.inout);
 
-		let success:boolean = await func.execute();
+		let success:boolean = await func.execute(FormsModule.DATABASE);
 
 		if (success)
 		{
-			out[0] = func.getOutParameter("out1");
-			out[1] = func.getOutParameter("out2");
+			out[0] = func.getValue("out1");
+			out[1] = func.getValue("out2");
 		}
 
 		return(out);

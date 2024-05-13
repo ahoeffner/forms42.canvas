@@ -20,10 +20,10 @@
 */
 
 import { FormsModule } from "../FormsModule";
-import { DatabaseTable, LockMode } from "futureforms";
+import { DatabaseSource, LockMode } from "futureforms";
 
 
-export class Template extends DatabaseTable
+export class Template extends DatabaseSource
 {
 	public static table:string = "tablename";
 	public static order:string = "col1, col2";
@@ -32,10 +32,11 @@ export class Template extends DatabaseTable
 
 	constructor()
 	{
-		super(FormsModule.DATABASE,Template.table);
+		super(Template.table);
 
 		this.sorting = Template.order;
 		this.primaryKey = Template.primarykey;
 		this.rowlocking = LockMode.Pessimistic;
+		this.connection = FormsModule.DATABASE;
 	}
 }
